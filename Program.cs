@@ -6,6 +6,7 @@ builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(1000); // to listen for incoming http connection on port 5001
 });
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllers();
 
