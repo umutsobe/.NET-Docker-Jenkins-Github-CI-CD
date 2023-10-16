@@ -6,20 +6,6 @@ namespace TestApi_CI_CD.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing",
-            "Bracing",
-            "Chilly",
-            "Cool",
-            "Mild",
-            "Warm",
-            "Balmy",
-            "Hot",
-            "Sweltering",
-            "Scorching"
-        };
-
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration _configuration;
 
@@ -35,7 +21,7 @@ namespace TestApi_CI_CD.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IActionResult Get()
         {
-            var response = _configuration["testEnvironment"];
+            var response = "environment = " + _configuration["testEnvironment"];
 
             return Ok(response);
         }
