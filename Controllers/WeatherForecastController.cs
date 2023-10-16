@@ -21,16 +21,21 @@ namespace TestApi_CI_CD.Controllers
         };
 
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration _configuration;
 
-        public WeatherForecastController(IHttpContextAccessor httpContextAccessor)
+        public WeatherForecastController(
+            IHttpContextAccessor httpContextAccessor,
+            IConfiguration configuration
+        )
         {
             _httpContextAccessor = httpContextAccessor;
+            _configuration = configuration;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IActionResult Get()
         {
-            var response = _httpContextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            var response = _configuration["testEnvironment"];
 
             return Ok(response);
         }
