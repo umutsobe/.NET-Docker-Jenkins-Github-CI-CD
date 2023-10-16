@@ -21,7 +21,7 @@ namespace TestApi_CI_CD.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IActionResult Get()
         {
-            var response = "environment = " + _configuration["testEnvironment"];
+            var response = "environment = " + _configuration["testEnvironment"].ToString();
 
             return Ok(response);
         }
